@@ -2,8 +2,6 @@
 
 Este guia ensina, passo a passo, como preparar o computador e executar um jogo da velha feito em Python.
 
-> **Observação:** no momento, este repositório contém apenas este arquivo `README.md`. Para jogar, também é necessário que exista um arquivo Python do jogo, por exemplo `jogo_da_velha.py`, dentro da pasta baixada.
-
 ## 1. Verifique se o Python já está instalado
 
 ### Windows
@@ -185,3 +183,9 @@ Ctrl + C
 ```
 
 Bom jogo!
+
+## Informações do projeto
+
+- **Nome do projeto:** Jogo da Velha
+- **Integrantes:** Breno e Crysthofer
+- **Objetivo do sistema:** Jogo para passar o tempo e se divertir.
