@@ -188,4 +188,5 @@ Bom jogo!
 
 - **Nome do projeto:** Jogo da Velha
 - **Integrantes:** Breno e Crysthofer
-- **Objetivo do sistema:** Jogo para passar o tempo e se divertir.
+- **Objetivo do sistema:** Jogo para passar o tempo e se divertir
+- **Tema:** Animais
