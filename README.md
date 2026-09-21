@@ -190,3 +190,5 @@ Bom jogo!
 - **Integrantes:** Breno e Crysthofer
 - **Objetivo do sistema:** Jogo para passar o tempo e se divertir
 - **Tema:** Animais
+
+colaborador: @LeandroMontanari/jogo-da-velha-python3
