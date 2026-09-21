@@ -150,7 +150,11 @@ Em geral, o jogo da velha funciona assim:
 
 Siga exatamente o formato solicitado pelo programa. Por exemplo, se ele pedir um número de `1` a `9`, digite apenas o número correspondente à casa desejada.
 
-## 7. Problemas comuns
+## 7. Funcionamento do sistema
+
+O sistema exibe o tabuleiro do jogo no Terminal e alterna a vez entre os dois jogadores. A cada rodada, o jogador atual informa a posição onde deseja colocar seu símbolo (`X` ou `O`). O programa verifica se a posição escolhida está disponível, atualiza o tabuleiro e confere se houve uma vitória ou empate. O jogo continua até que um jogador forme uma linha com três símbolos iguais ou todas as casas sejam preenchidas.
+
+## 8. Problemas comuns
 
 ### “python não é reconhecido como um comando”
 
@@ -174,7 +178,7 @@ Você provavelmente está na pasta errada ou digitou o nome do arquivo incorreta
 
 Execute-o pelo Terminal, em vez de clicar duas vezes nele. Assim, você conseguirá ver as mensagens e possíveis erros do programa.
 
-## 8. Parar o jogo
+## 9. Parar o jogo
 
 Para interromper o programa a qualquer momento, pressione:
 
