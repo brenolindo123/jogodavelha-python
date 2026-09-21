@@ -1,25 +1,28 @@
 import tkinter as tk
 
 
-class JogoDaVelha:
+class JogoDaVelhaPet:
 
   def __init__(self, root):
     self.root = root
-    self.root.title("Jogo da Velha")
+    self.root.title("Jogo da Velha - 🐱 vs 🐶")
     self.root.geometry("400x520")
     self.root.resizable(False, False)
+
+    self.EMOJI_1 = "🐱"
+    self.EMOJI_2 = "🐶"
 
     self.COR_FUNDO = "#1e1e2e"
     self.COR_PAINEL = "#181825"
     self.COR_BOTAO = "#313244"
     self.COR_TEXTO = "#cdd6f4"
-    self.COR_X = "#f38ba8"
-    self.COR_O = "#89b4fa"
+    self.COR_GATO = "#fab387"
+    self.COR_CACHORRO = "#f9e2af"
     self.COR_DESTAQUE = "#a6e3a1"
 
     self.root.configure(bg=self.COR_FUNDO)
 
-    self.primeiro_a_jogar = "X"
+    self.primeiro_a_jogar = self.EMOJI_1
     self.jogador_atual = self.primeiro_a_jogar
 
     self.tabuleiro = [""] * 9
@@ -29,6 +32,9 @@ class JogoDaVelha:
     self.criar_grade()
     self.criar_botao_reiniciar()
 
+  def obter_cor_jogador(self, jogador):
+    return self.COR_GATO if jogador == self.EMOJI_1 else self.COR_CACHORRO
+
   def criar_header(self):
     self.frame_header = tk.Frame(self.root, bg=self.COR_FUNDO)
     self.frame_header.pack(pady=20)
@@ -36,9 +42,9 @@ class JogoDaVelha:
     self.label_status = tk.Label(
         self.frame_header,
         text=f"Vez do Jogador: {self.jogador_atual}",
-        font=("Helvetica", 16, "bold"),
+        font=("Helvetica", 18, "bold"),
         bg=self.COR_FUNDO,
-        fg=self.COR_X if self.jogador_atual == "X" else self.COR_O,
+        fg=self.obter_cor_jogador(self.jogador_atual),
     )
     self.label_status.pack()
 
@@ -51,9 +57,9 @@ class JogoDaVelha:
       btn = tk.Button(
           self.frame_grade,
           text="",
-          font=("Helvetica", 28, "bold"),
-          width=4,
-          height=2,
+          font=("Segoe UI Emoji", 32),
+          width=3,
+          height=1,
           bg=self.COR_BOTAO,
           fg=self.COR_TEXTO,
           activebackground="#45475a",
@@ -67,11 +73,10 @@ class JogoDaVelha:
       self.botoes.append(btn)
 
   def criar_botao_reiniciar(self):
-
     self.btn_reiniciar = tk.Button(
         self.root,
-        text="🔄 Reiniciar Jogo",
-        font=("Helvetica", 13, "bold"),
+        text="Reiniciar Jogo",
+        font=("Helvetica", 12, "bold"),
         bg="#f38ba8",
         fg="#11111b",
         activebackground="#f5e0dc",
@@ -88,25 +93,26 @@ class JogoDaVelha:
   def jogar(self, index):
     if self.tabuleiro[index] == "" and not self.vencedor:
       self.tabuleiro[index] = self.jogador_atual
-      cor_texto = self.COR_X if self.jogador_atual == "X" else self.COR_O
 
       self.botoes[index].config(
           text=self.jogador_atual,
-          disabledforeground=cor_texto,
           state="disabled",
       )
 
       if self.verificar_vitoria():
         self.vencedor = self.jogador_atual
         self.label_status.config(
-            text=f"Jogador {self.vencedor} Venceu! 🎉",
-            fg=self.COR_DESTAQUE,
+            text=f"Jogador {self.vencedor} Venceu!", fg=self.COR_DESTAQUE
         )
       elif "" not in self.tabuleiro:
-        self.label_status.config(text="Empate! 🤝", fg=self.COR_TEXTO)
+        self.label_status.config(text="Empate!", fg=self.COR_TEXTO)
       else:
-        self.jogador_atual = "O" if self.jogador_atual == "X" else "X"
-        cor_turno = self.COR_X if self.jogador_atual == "X" else self.COR_O
+        self.jogador_atual = (
+            self.EMOJI_2
+            if self.jogador_atual == self.EMOJI_1
+            else self.EMOJI_1
+        )
+        cor_turno = self.obter_cor_jogador(self.jogador_atual)
         self.label_status.config(
             text=f"Vez do Jogador: {self.jogador_atual}", fg=cor_turno
         )
@@ -137,14 +143,15 @@ class JogoDaVelha:
     return False
 
   def reiniciar(self):
-
-    self.primeiro_a_jogar = "O" if self.primeiro_a_jogar == "X" else "X"
+    self.primeiro_a_jogar = (
+        self.EMOJI_2 if self.primeiro_a_jogar == self.EMOJI_1 else self.EMOJI_1
+    )
     self.jogador_atual = self.primeiro_a_jogar
 
     self.tabuleiro = [""] * 9
     self.vencedor = None
 
-    cor_turno = self.COR_X if self.jogador_atual == "X" else self.COR_O
+    cor_turno = self.obter_cor_jogador(self.jogador_atual)
     self.label_status.config(
         text=f"Vez do Jogador: {self.jogador_atual}", fg=cor_turno
     )
@@ -155,5 +162,5 @@ class JogoDaVelha:
 
 if __name__ == "__main__":
   root = tk.Tk()
-  app = JogoDaVelha(root)
+  app = JogoDaVelhaPet(root)
   root.mainloop()
